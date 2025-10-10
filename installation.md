@@ -42,22 +42,23 @@ in the shell/compiler that you use.
 The explicit chain of command to run depends on the OS. In case of Windows:
 
 ```shell
-mklink <path-to-your-repo\filename.ending> %USERPROFILE%\texmf\tex\latexcommonstuff\filename.ending
+mklink %USERPROFILE%\texmf\tex\latex\<linked_filename.ending> <path-to-your-repo\filename.ending>
 ```
 
-or with the `/d` option, to copy an entire directory.
+or with the `/d` option, if you want to copy an entire directory.
 
 For example, I usually install files in the `Documents/GitHub` folder. In case
 of the [gwbar repo](https://github.com/MaxMelching/gwbar), the appropriate command is then
 
 ```shell
-mklink %USERPROFILE%/Documents/GitHub/gwbar/gwbar.sty %USERPROFILE%/texmf/tex/latex/commonstuff/gwbar.sty
+mklink %USERPROFILE%\texmf\tex\latex\gwbar.sty %USERPROFILE%\Documents\GitHub\gwbar\gwbar.sty
 ```
 
 where you could very well type out the explicit path as well, instead of using
-`%USERPROFILE%`.
+`%USERPROFILE%`. You could also create a subdirectory and place the file
+in there, LaTeX will find it either way.
 
-***Note:*** The `/texmf/tex/latex/commonstuff/` directory chain might not exist
+***Note:*** The `/texmf/tex/latex/` directory chain might not exist
 yet. In that case, just create it.
 
 ***Note:*** Symlinking usually requires admin privileges on Windows. One
@@ -68,5 +69,5 @@ possibility to enable them is prepending a `sudo` to the above prompt.
 With the same command structure and only a few adjustments:
 
 ```shell
-ln -s <path-to-your-repo/filename.ending> ~/texmf/tex/latex/commonstuff/filename.ending
+ln -s <path-to-your-repo/filename.ending> ~/texmf/tex/latex/<linked_filename.ending>
 ```
